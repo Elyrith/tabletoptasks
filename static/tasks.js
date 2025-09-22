@@ -6,10 +6,10 @@ function showToast(message) {
     toast.textContent = message;
     document.body.appendChild(toast);
 
-    // Show it
+    // Show toast
     setTimeout(() => toast.classList.add('show'), 50);
 
-    // Hide + remove it
+    // Hide and remove toast
     setTimeout(() => {
         toast.classList.remove('show');
         setTimeout(() => toast.remove(), 300);
@@ -22,19 +22,26 @@ function toggleTask(card) {
         selectedCard.classList.remove('selected');
     }
 
-    // Toggle this one
+    // Toggle new selection
     const isSelected = card.classList.toggle('selected');
     selectedCard = isSelected ? card : null;
 }
 
 function markComplete() {
-    if (selectedCard) {
-        selectedCard.classList.remove('failed');
-        selectedCard.classList.add('completed');
+    if (!selectedCard) {
+        showToast("Select a task.");
+        return;
     }
+    selectedCard.classList.remove('failed');
+    selectedCard.classList.add('completed');
 }
 
 function markFailed() {
+    if (!selectedCard) {
+        showToast("Select a task.");
+        return;
+    }
+
     if (selectedCard) {
         const cards = document.querySelectorAll('.card');
         const index = Array.from(cards).indexOf(selectedCard);
@@ -51,7 +58,9 @@ function markFailed() {
 }
 
 function resetCard() {
-    if (selectedCard) {
-        selectedCard.classList.remove('completed', 'failed');
+    if (!selectedCard) {
+        showToast("Select a task.");
+        return;
     }
+    selectedCard.classList.remove('completed', 'failed');
 }
