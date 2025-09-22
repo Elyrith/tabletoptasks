@@ -23,11 +23,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt -t package/
 
-      - name: Copy project files
+      - name: Package Lambda function
         run: |
-          cp main.py package/
-          cp card.py package/
-          cp -r static package/
+          zip -r lambda_package.zip . -x '*.git*' '*.github*'
 
       - name: Zip Lambda package
         run: |
