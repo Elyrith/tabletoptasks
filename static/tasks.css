@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'IBM Plex Serif', serif;
     background: #f0f2f5;
     padding: 20px;
     text-align: center;
@@ -40,7 +40,7 @@ h1 {
 
 /* checkmark badge */
 .card.selected::after {
-    content: "✓";
+    content: "\2713"; /* Unicode for checkmark */
     position: absolute;
     top: 8px;
     right: 10px;
