@@ -20,4 +20,9 @@ def card(context):
     output = "Here are your tasks:\n"
     for task in selected_tasks:
         output = output + "- " + task + "\n"
-    return {"message": output}
+
+    return {
+        "statusCode": 200,
+        "headers": {"Content-Type": "text/html"},
+        "body": output  # output is the HTML string
+    }
