@@ -1,35 +1,34 @@
 let selectedCard = null;
 
 function toggleTask(card) {
-    if (selectedCard) {
-        selectedCard.style.border = '';
+    // Deselect previous
+    if (selectedCard && selectedCard !== card) {
+        selectedCard.classList.remove('selected');
     }
-    selectedCard = card;
-    card.style.border = '2px solid #007bff';
+
+    // Toggle this one
+    const isSelected = card.classList.toggle('selected');
+    selectedCard = isSelected ? card : null;
 }
 
-// Mark the selected card as completed (green + line-through)
 function markComplete() {
     if (selectedCard) {
-        selectedCard.classList.remove('caught');
+        selectedCard.classList.remove('failed');
         selectedCard.classList.add('completed');
-        selectedCard.style.border = '';
+        selectedCard.classList.remove('selected');
     }
 }
 
-// Mark the selected card as caught (red + line-through)
 function markCaught() {
     if (selectedCard) {
         selectedCard.classList.remove('completed');
-        selectedCard.classList.add('caught');
-        selectedCard.style.border = '';
+        selectedCard.classList.add('failed');
+        selectedCard.classList.remove('selected');
     }
 }
 
-// Reset the selected card to default state
 function resetCard() {
     if (selectedCard) {
-        selectedCard.classList.remove('completed', 'caught');
-        selectedCard.style.border = '';
+        selectedCard.classList.remove('completed', 'failed', 'selected');
     }
 }

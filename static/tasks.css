@@ -1,75 +1,67 @@
-body {
-    font-family: Arial, sans-serif;
-    background: #f0f2f5;
-    padding: 20px;
-    text-align: center;
-}
-
-h1 {
-    color: #333;
-}
-
+/* selection visuals */
 .card {
-    background: white;
-    border-radius: 12px;
-    padding: 15px 20px; /* vertical + horizontal padding */
-    margin: 10px auto;
-    width: 95%;
-    max-width: 800px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.2s ease;
-
-    /* Fixed height for uniformity */
-    min-height: 60px;       /* adjust as needed for two lines */
-    overflow: hidden;   /* prevent overflow if text is too long */
-    display: flex;
-    align-items: center; /* vertically center text */
+  background: white;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin: 10px auto;
+  width: 95%;
+  max-width: 800px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  text-align: left;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
+  border: 2px solid transparent; /* baseline border for smooth transition */
+  position: relative;
+  min-height: 50px;
+  overflow-wrap: break-word;
 }
 
-.completed {
-    background-color: rgb(48, 186, 80);
-/*    text-decoration: line-through; */
+/* selected state (make this very obvious) */
+.card.selected {
+  border-color: rgb(62, 130, 246);           /* strong blue border */
+  box-shadow: 0 10px 20px rgba(62,130,246,0.12);
+  transform: translateY(-4px);
+  z-index: 2;
 }
 
-.caught {
-    background-color: rgb(202, 108, 108);
-    text-decoration: line-through;
+/* checkmark badge */
+.card.selected::after {
+  content: "✓";
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  background: rgb(62,130,246);
+  color: #fff;
+  width: 26px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 50%;
+  font-weight: 700;
+  font-size: 14px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
 }
 
-.button-container {
-    margin-top: 20px;
+/* keep existing semantics for completed/failed but make them compatible */
+.card.completed {
+  background-color: #d4edda;
+  text-decoration: line-through;
+  border-color: rgba(40,167,69,0.6);
+  box-shadow: 0 6px 14px rgba(40,167,69,0.06);
 }
 
-button {
-    padding: 10px 15px;
-    margin: 0 5px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 16px;
+.card.failed {
+  background-color: #f8d7da;
+  text-decoration: line-through;
+  border-color: rgba(220,53,69,0.6);
+  box-shadow: 0 6px 14px rgba(220,53,69,0.06);
 }
 
-button:hover {
-    opacity: 0.9;
+/* touch feedback for immediate tap feel */
+.card:active {
+  transform: scale(0.995);
+  transition: transform 0.06s ease;
 }
 
-button:active {
-    transform: scale(0.97);
-}
-
-.complete-btn {
-    background-color: #28a745;
-    color: white;
-}
-
-.caught-btn {
-    background-color: #dc3545;
-    color: white;
-}
-
-.reset-btn {
-    background-color: #ffc107;
-    color: white;
-}
+/* buttons unchanged, but keep pointer cursor */
+.button-container button { cursor: pointer; }
