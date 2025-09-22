@@ -1,15 +1,30 @@
-from flask import Flask, render_template
+import os
+from jinja2 import Template
 from card import card
 
-app = Flask(__name__)
+BASE_DIR = os.path.join(os.path.dirname(__file__), "static")
 
-@app.route("/")
-def homepage():
-    result = card(None)
-    lines = result['message'].split("\n")
-    header = lines[0]
-    tasks = [line[2:] for line in lines[1:] if line.strip()]
-    return render_template("tasks.html", header=header, tasks=tasks)
+def lambda_handler(event, context):
+    # Load HTML template
+    template_path = os.path.join(BASE_DIR, "tasks.html")
+    with open(template_path) as f:
+        template = Template(f.read())
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
+    # Load CSS and JS
+    with open(os.path.join(BASE_DIR, "tasks.css")) as f:
+        css = f.read()
+    with open(os.path.join(BASE_DIR, "tasks.js")) as f:
+        js = f.read()
+
+    # Get tasks
+    selected_tasks = card(None)["message"].split("\n")[1:]
+    tasks = [line[2:] for line in selected_tasks if line.strip()]
+
+    # Render HTML
+    html = template.render(header="Here are your tasks", tasks=tasks, css=css, js=js)
+
+    return {
+        "statusCode": 200,
+        "headers": {"Content-Type": "text/html"},
+        "body": html
+    }
