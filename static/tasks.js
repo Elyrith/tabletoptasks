@@ -31,7 +31,6 @@ function markComplete() {
     if (selectedCard) {
         selectedCard.classList.remove('failed');
         selectedCard.classList.add('completed');
-        selectedCard.classList.remove('selected');
     }
 }
 
@@ -48,12 +47,11 @@ function markFailed() {
 
         selectedCard.classList.remove('completed');
         selectedCard.classList.add('failed');
-        selectedCard.classList.remove('selected');
     }
 }
 
 function resetCard() {
     if (selectedCard) {
-        selectedCard.classList.remove('completed', 'failed', 'selected');
+        selectedCard.classList.remove('completed', 'failed');
     }
 }
