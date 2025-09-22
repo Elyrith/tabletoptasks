@@ -59,7 +59,7 @@ h1 {
 /* completed / failed states */
 .card.completed {
     background-color: #d4edda;
-    text-decoration: line-through;
+    text-decoration: none !important; /* force no line-through */
     border-color: rgba(40,167,69,0.6);
     box-shadow: 0 6px 14px rgba(40,167,69,0.06);
 }
