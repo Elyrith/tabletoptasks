@@ -1,57 +1,66 @@
 let selectedCard = null;
 
+// Toast container
+const toastContainer = document.createElement('div');
+toastContainer.id = 'toast-container';
+document.body.appendChild(toastContainer);
+
 function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast';
     toast.textContent = message;
-    document.body.appendChild(toast);
+    toastContainer.appendChild(toast);
 
-    // Show it
-    setTimeout(() => toast.classList.add('show'), 50);
-
-    // Hide + remove it
     setTimeout(() => {
-        toast.classList.remove('show');
-        setTimeout(() => toast.remove(), 300);
-    }, 2000);
+        toast.remove();
+    }, 2000); // 2 seconds
 }
 
+// Update button states
+function updateButtonState() {
+    const hasSelection = selectedCard !== null;
+    document.getElementById("mark-complete-btn").disabled = !hasSelection;
+    document.getElementById("mark-failed-btn").disabled = !hasSelection;
+    document.getElementById("reset-btn").disabled = !hasSelection;
+}
+
+// Toggle selection of a card
 function toggleTask(card) {
-    // Deselect previous
-    if (selectedCard && selectedCard !== card) {
-        selectedCard.classList.remove('selected');
-    }
-
-    // Toggle this one
-    const isSelected = card.classList.toggle('selected');
-    selectedCard = isSelected ? card : null;
+    if (selectedCard === card) return; // Already selected
+    if (selectedCard) selectedCard.classList.remove('selected');
+    selectedCard = card;
+    selectedCard.classList.add('selected');
+    updateButtonState();
 }
 
+// Mark selected card as completed
 function markComplete() {
-    if (selectedCard) {
-        selectedCard.classList.remove('failed');
-        selectedCard.classList.add('completed');
-    }
+    if (!selectedCard) return;
+
+    selectedCard.classList.remove('failed');
+    selectedCard.classList.add('completed');
 }
 
+// Mark selected card as failed (cannot fail first card)
 function markFailed() {
-    if (selectedCard) {
-        const cards = document.querySelectorAll('.card');
-        const index = Array.from(cards).indexOf(selectedCard);
+    if (!selectedCard) return;
 
-        // Don't let the first task (guesswhat) be failed
-        if (index === 0) {
-            showToast("The 'Guess what?' task can't be marked as failed!");
-            return;
-        }
-
-        selectedCard.classList.remove('completed');
-        selectedCard.classList.add('failed');
+    const index = Array.from(document.querySelectorAll('.card')).indexOf(selectedCard);
+    if (index === 0) {
+        showToast("The 'Guess what?' task can't be marked as failed!");
+        return;
     }
+
+    selectedCard.classList.remove('completed');
+    selectedCard.classList.add('failed');
 }
 
+// Reset selected card
 function resetCard() {
-    if (selectedCard) {
-        selectedCard.classList.remove('completed', 'failed');
-    }
+    if (!selectedCard) return;
+
+    selectedCard.classList.remove('completed', 'failed');
 }
+
+// Initialize buttons as disabled
+updateButtonState();
