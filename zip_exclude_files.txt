@@ -1,0 +1,8 @@
+.gitignore
+__pycache__/
+
+README.md
+requirements.txt
+
+local_test.py
+local_preview.html

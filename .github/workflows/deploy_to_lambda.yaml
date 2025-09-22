@@ -25,7 +25,7 @@ jobs:
 
       - name: Package Lambda function
         run: |
-          zip lambda_package.zip -@ < project_files.txt
+          zip -r lambda_package.zip . -x@zip_exclude_files.txt
 
       - name: Zip Lambda package
         run: |
