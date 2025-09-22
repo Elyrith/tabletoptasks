@@ -17,8 +17,7 @@ def lambda_handler(event, context):
         js = f.read()
 
     # Get tasks
-    selected_tasks = card(None)["message"].split("\n")[1:]
-    tasks = [line[2:] for line in selected_tasks if line.strip()]
+    tasks = card(None)  # already a list of strings
 
     # Render HTML
     html = template.render(header="Here are your tasks", tasks=tasks, css=css, js=js)

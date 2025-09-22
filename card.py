@@ -1,5 +1,6 @@
 import random
 
+number_of_tasks = 4
 mandatory_task = "Say to someone 'Guess what?' and have them say 'What?' back. (Everyone has this task! Beware!)"
 
 all_tasks = [
@@ -11,18 +12,11 @@ all_tasks = [
             "Ask someone to recommend a good movie.",
         ]
 
-def choose_four_tasks():
-    random_tasks = random.sample(all_tasks, 4)
+def choose_tasks(tasks_count: int) -> list[str]:
+    random_tasks = random.sample(all_tasks, tasks_count)
     return [mandatory_task] + random_tasks
 
+# card.py
 def card(context):
-    selected_tasks = choose_four_tasks()
-    output = "Here are your tasks:\n"
-    for task in selected_tasks:
-        output = output + "- " + task + "\n"
-
-    return {
-        "statusCode": 200,
-        "headers": {"Content-Type": "text/html"},
-        "body": output  # output is the HTML string
-    }
+    selected_tasks = choose_tasks(number_of_tasks)
+    return selected_tasks
