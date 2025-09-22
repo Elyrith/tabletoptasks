@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Cards</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='tasks.css') }}">
+</head>
+<body>
+    <h1>{{ header }}</h1>
+
+    {% for task in tasks %}
+        <div class="card" onclick="toggleTask(this)">
+            {{ task }}
+        </div>
+    {% endfor %}
+
+    <div class="button-container">
+        <button class="complete-btn" onclick="markComplete()">Mark Complete</button>
+        <button class="caught-btn" onclick="markCaught()">Mark Caught</button>
+        <button class="reset-btn" onclick="resetCard()">Reset Card</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='tasks.js') }}"></script>
+</body>
+</html>

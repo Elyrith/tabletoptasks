@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 15px 20px; /* vertical + horizontal padding */
+    margin: 10px auto;
+    width: 95%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    /* Fixed height for uniformity */
+    min-height: 60px;       /* adjust as needed for two lines */
+    overflow: hidden;   /* prevent overflow if text is too long */
+    display: flex;
+    align-items: center; /* vertically center text */
+}
+
+.completed {
+    background-color: rgb(48, 186, 80);
+/*    text-decoration: line-through; */
+}
+
+.caught {
+    background-color: rgb(202, 108, 108);
+    text-decoration: line-through;
+}
+
+.button-container {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+.complete-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.caught-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.reset-btn {
+    background-color: #ffc107;
+    color: white;
+}
