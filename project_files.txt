@@ -1,0 +1,4 @@
+main.py
+card.py
+tasks.yaml
+static/*
