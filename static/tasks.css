@@ -1,4 +1,3 @@
-/* --- General page styling --- */
 body {
     font-family: 'IBM Plex Serif', serif;
     background: #f0f2f5;
@@ -10,7 +9,7 @@ h1 {
     color: #333;
 }
 
-/* --- Card base styling --- */
+/* card base */
 .card {
     background: white;
     border-radius: 12px;
@@ -31,7 +30,7 @@ h1 {
     position: relative;
 }
 
-/* --- Selected card state --- */
+/* selected state (very obvious) */
 .card.selected {
     border-color: rgb(62, 130, 246);
     box-shadow: 0 10px 20px rgba(62,130,246,0.12);
@@ -39,9 +38,9 @@ h1 {
     z-index: 2;
 }
 
-/* Checkmark badge on selected card */
+/* checkmark badge */
 .card.selected::after {
-    content: "\2713"; /* Unicode checkmark */
+    content: "\2713"; /* Unicode for checkmark */
     position: absolute;
     top: 8px;
     right: 10px;
@@ -57,7 +56,7 @@ h1 {
     box-shadow: 0 2px 6px rgba(0,0,0,0.12);
 }
 
-/* --- Completed / Failed states --- */
+/* completed / failed states */
 .card.completed {
     background-color: #d4edda;
     text-decoration: none !important; /* force no line-through */
@@ -72,13 +71,13 @@ h1 {
     box-shadow: 0 6px 14px rgba(220,53,69,0.06);
 }
 
-/* --- Touch feedback --- */
+/* touch feedback */
 .card:active {
     transform: scale(0.995);
     transition: transform 0.06s ease;
 }
 
-/* --- Buttons --- */
+/* button section */
 .button-container {
     margin-top: 20px;
 }
@@ -101,15 +100,6 @@ button:active {
     transform: scale(0.97);
 }
 
-/* Disabled buttons */
-button:disabled {
-    background-color: #ccc;
-    color: #666;
-    cursor: not-allowed;
-    opacity: 0.7;
-}
-
-/* Specific button colors */
 .complete-btn {
     background-color: #28a745;
 }
@@ -123,28 +113,22 @@ button:disabled {
     color: black;
 }
 
-/* --- Toast notifications --- */
-#toast-container {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 9999;
-}
-
 .toast {
-    background: #dc3545; /* red, matches "failed" */
-    color: white;
-    padding: 10px 18px;
-    border-radius: 6px;
-    font-size: 14px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-    margin-top: 5px;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #dc3545; /* red, matches "failed" */
+  color: white;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-size: 14px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 9999;
 }
-
 .toast.show {
-    opacity: 1;
+  opacity: 1;
 }

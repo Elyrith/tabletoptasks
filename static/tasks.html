@@ -11,9 +11,9 @@
     <div class="card" onclick="toggleTask(this)">{{ task }}</div>
     {% endfor %}
     <div class="button-container">
-        <button id="mark-complete-btn" class="complete-btn" onclick="markComplete()" disabled>Mark Completed</button>
-        <button id="mark-failed-btn" class="failed-btn" onclick="markFailed()" disabled>Mark Failed</button>
-        <button id="reset-btn" class="reset-btn" onclick="resetCard()" disabled>Reset Card</button>
+        <button class="complete-btn" onclick="markComplete()">Mark Complete</button>
+        <button class="failed-btn" onclick="markFailed()">Mark Failed</button>
+        <button class="reset-btn" onclick="resetCard()">Reset Card</button>
     </div>
     <script>{{ js }}</script>
 </body>
