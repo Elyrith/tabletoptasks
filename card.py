@@ -1,7 +1,7 @@
 import random
 
 number_of_tasks = 4
-mandatory_task = "Say to someone 'Guess what?' and have them say 'What?' back. (Everyone has this task! Beware!)"
+guesswhat_task = "Say to someone 'Guess what?' and have them say 'What?' back. (Everyone has this task! Beware!)"
 
 all_tasks = [
             "Tell someone you've lost their phone and get them to use theirs to call it.",
@@ -14,7 +14,7 @@ all_tasks = [
 
 def choose_tasks(tasks_count: int) -> list[str]:
     random_tasks = random.sample(all_tasks, tasks_count)
-    return [mandatory_task] + random_tasks
+    return [guesswhat_task] + random_tasks
 
 # card.py
 def card(context):
