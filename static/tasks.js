@@ -22,9 +22,9 @@ function toggleTask(card) {
         selectedCard.classList.remove('selected');
     }
 
-    // Toggle new selection
-    const isSelected = card.classList.toggle('selected');
-    selectedCard = isSelected ? card : null;
+    // Always select this one
+    card.classList.add('selected');
+    selectedCard = card;
 }
 
 function markComplete() {
