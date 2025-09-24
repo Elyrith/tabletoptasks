@@ -3,3 +3,6 @@ jinja2
 
 # Reading YAML for tasks
 pyyaml
+
+# Parsing tasks as markdown
+markdown

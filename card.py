@@ -3,7 +3,7 @@ import os
 import random
 
 number_of_tasks = 4
-guesswhat_task = "Say to someone 'Guess what?' and have them say 'What?' back. (<strong>Everyone has this task!</strong>)"
+guesswhat_task = "Say to someone 'Guess what?' and have them say 'What?' back. **(Everyone has this task!)**"
 
 # Load tasks from YAML
 BASE_DIR = os.path.dirname(__file__)
