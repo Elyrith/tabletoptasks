@@ -1,0 +1,25 @@
+header: "Set the Trap"
+footer: "Created by "
+support_text: "Support"
+
+goal: "Goal: Be the first person to complete all tasks, without being caught"
+
+everyone_task: "Say to someone 'Guess what?' and have them say 'What?' back. **(Everyone has this task!)**"
+tasks:
+  - "Get someone to show you a picture of their pet."
+  - "Get someone to help you with directions to somewhere."
+  - "Get someone to recommend a good movie."
+  - "Get someone to lend you a pen or pencil."
+  - "Get someone to teach you how to say 'hello' in another language."
+  - "Get someone to hold your drink while you 'tie your shoe' (even if you're not wearing laces)."
+  - "Convince someone to swap seats with you just because 'it has better vibes.'"
+  - "Get someone to high-five you twice in under 5 seconds."
+  - "Get someone to fist-bump you then high-five you in under 5 seconds."
+  - "Convince someone to stand up and then sit back down with you."
+
+how_to_play_header: "How to Play"
+how_to_play:
+  - "Click a card to select it."
+  - "Only one card can be selected at a time."
+  - "Use the buttons to change the status of the selected card."
+  - "If someone catches you trying to complete one of your tasks, you can't mark it as complete **during this attempt**. You can try again!"
