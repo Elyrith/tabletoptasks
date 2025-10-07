@@ -45,6 +45,10 @@ h2 {
     margin-top: 0px;
 }
 
+.how_to_play ul {
+    padding-right: 10px;
+}
+
 .how_to_play li p {
     max-width: 600px;
     text-align: left;
