@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>{{ header }}</h1>
+    <h2 class="goal">{{ goal }}</h2>
     {% for task in tasks %}
     <div class="card" onclick="toggleTask(this)">{{ task }}</div>
     {% endfor %}
@@ -36,7 +37,7 @@
     <script>
     kofiWidgetOverlay.draw('elyrith', {
         'type': 'floating-chat',
-        'floating-chat.donateButton.text': '{{ support_text }} Ryan',
+        'floating-chat.donateButton.text': '{{ support_prefix }} Ryan',
         'floating-chat.donateButton.background-color': '#fc7c00',
         'floating-chat.donateButton.text-color': '#fff'
     });

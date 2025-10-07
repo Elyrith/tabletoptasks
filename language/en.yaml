@@ -1,8 +1,8 @@
 header: "Set the Trap"
 footer: "Created by "
-support_text: "Support"
+support_prefix: "Support"
 
-goal: "Goal: Be the first person to complete all tasks, without being caught"
+goal: "Goal: Be the first person to complete all your tasks, without being caught!"
 
 everyone_task: "Say to someone 'Guess what?' and have them say 'What?' back. **(Everyone has this task!)**"
 tasks:

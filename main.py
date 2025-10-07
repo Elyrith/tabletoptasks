@@ -23,7 +23,7 @@ def lambda_handler(event, context):
         lang_data = yaml.safe_load(f)
 
     header = lang_data.get("header", "Set the Trap")
-
+    goal = lang_data.get("goal", "Goal: Be the first person to complete all your tasks, without being caught!")
     # Load HTML template
     template_path = os.path.join(BASE_DIR, "tasks.html")
     with open(template_path, encoding="utf-8") as f:
@@ -48,11 +48,11 @@ def lambda_handler(event, context):
     how_to_play_html = [markdown.markdown(rule) for rule in how_to_play]
 
     # Support text
-    support_text = lang_data.get("support_text", "Support Me")
+    support_prefix = lang_data.get("support_prefix", "Support Me")
 
     footer = lang_data.get("footer", "Created by ")
     # Render HTML
-    html = template.render(header=header, how_to_play_header=how_to_play_header, how_to_play=how_to_play_html, tasks=tasks_html, support_text=support_text, footer=footer, css=css, js=js)
+    html = template.render(header=header, goal=goal, how_to_play_header=how_to_play_header, how_to_play=how_to_play_html, tasks=tasks_html, support_prefix=support_prefix, footer=footer, css=css, js=js)
 
     return {
         "statusCode": 200,
