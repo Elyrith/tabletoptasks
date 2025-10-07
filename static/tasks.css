@@ -3,10 +3,16 @@ body {
     background: #f0f2f5;
     padding: 20px;
     text-align: center;
+    padding: 0px;
 }
 
 h1 {
     color: #333;
+    margin: 0px auto;
+}
+
+h2 {
+    margin: 0px auto;
 }
 
 .goal {
@@ -182,15 +188,11 @@ button:active {
 
 @media (max-width: 600px) {
     .card {
-        font-size: 24px;
-    }
-
-    h1 {
-        font-size: 28px
+        font-size: 18px;
     }
 
     .goal {
-        font-size: 22px;
+        font-size: 20px;
     }
 
     .footer_container {
