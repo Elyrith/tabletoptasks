@@ -65,8 +65,7 @@ h2 {
 .card {
     background: white;
     border-radius: 12px;
-    padding: 15px 20px;
-    margin: 10px auto;
+    margin: 4px auto;
     width: 95%;
     max-width: 800px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -74,12 +73,17 @@ h2 {
     cursor: pointer;
     transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
 
-    min-height: 60px;       /* keeps uniform height */
+    min-height: 52px;       /* keeps uniform height */
     overflow-wrap: break-word;
     display: flex;
     align-items: center;
     border: 2px solid transparent; /* baseline border for smooth transition */
     position: relative;
+}
+
+.card p {
+    padding: 0px 20px;
+    margin: 5px auto;
 }
 
 /* selected state (very obvious) */
