@@ -3,6 +3,7 @@ import yaml
 from jinja2 import Template
 import markdown
 import random
+import base64
 
 BASE_DIR = os.path.join(os.path.dirname(__file__), "static")
 LANG_DIR = os.path.join(os.path.dirname(__file__), "language")
@@ -46,13 +47,21 @@ def lambda_handler(event, context):
     how_to_play = lang_data.get("how_to_play", [])
     how_to_play_html = [markdown.markdown(rule) for rule in how_to_play]
 
+    # QR Code for sharing
+
+    with open("static/images/qrcode-tabletop-tasks.png", "rb") as f:
+        img_data = base64.b64encode(f.read()).decode("utf-8")
+
+    qrcode = f'<img src="data:image/png;base64,{img_data}" alt="QR code">'
+
+
     # Support text
     support_prefix = lang_data.get("support_prefix", "Support Me")
 
     footer = lang_data.get("footer", "Created by ")
 
     # Render HTML
-    html = template.render(header=header, goal=goal, how_to_play_header=how_to_play_header, how_to_play=how_to_play_html, tasks=tasks_html, support_prefix=support_prefix, footer=footer, css=css, js=js)
+    html = template.render(header=header, goal=goal, how_to_play_header=how_to_play_header, how_to_play=how_to_play_html, qrcode=qrcode, tasks=tasks_html, support_prefix=support_prefix, footer=footer, css=css, js=js)
 
     return {
         "statusCode": 200,
