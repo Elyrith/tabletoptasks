@@ -7,11 +7,11 @@ import random
 BASE_DIR = os.path.join(os.path.dirname(__file__), "static")
 LANG_DIR = os.path.join(os.path.dirname(__file__), "language")
 
-number_of_tasks = 4
+number_of_tasks = 5
 
-def card(context, everyone_task: str, all_tasks: list[str]):
+def card(context, all_tasks: list[str]):
     random_tasks = random.sample(all_tasks, number_of_tasks)
-    return [everyone_task] + random_tasks
+    return random_tasks
 
 def how_to_play_to_html(how_to_play: list[str]) -> str:
     return " ".join(how_to_play)
@@ -22,8 +22,8 @@ def lambda_handler(event, context):
     with open(lang_file, encoding="utf-8") as f:
         lang_data = yaml.safe_load(f)
 
-    header = lang_data.get("header", "Set the Trap")
-    goal = lang_data.get("goal", "Goal: Be the first person to complete all your tasks, without being caught!")
+    header = lang_data.get("header", "Tabletop Tasks")
+    goal = lang_data.get("goal", "Be the first to complete all your tasks!")
     # Load HTML template
     template_path = os.path.join(BASE_DIR, "tasks.html")
     with open(template_path, encoding="utf-8") as f:
@@ -37,8 +37,7 @@ def lambda_handler(event, context):
 
     # Get tasks
     tasks_list = lang_data.get("tasks", [])
-    everyone_task = lang_data.get("everyone_task", "Say to someone 'Guess what?' and have them say 'What?' back. **(Everyone has this task!)**")
-    tasks = card(None, everyone_task, tasks_list)
+    tasks = card(None, tasks_list)
     # Convert each task from Markdown to HTML
     tasks_html = [markdown.markdown(task) for task in tasks]
 
@@ -51,6 +50,7 @@ def lambda_handler(event, context):
     support_prefix = lang_data.get("support_prefix", "Support Me")
 
     footer = lang_data.get("footer", "Created by ")
+
     # Render HTML
     html = template.render(header=header, goal=goal, how_to_play_header=how_to_play_header, how_to_play=how_to_play_html, tasks=tasks_html, support_prefix=support_prefix, footer=footer, css=css, js=js)
 

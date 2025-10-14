@@ -1,13 +1,21 @@
 body {
     font-family: 'IBM Plex Serif', serif;
-    background: #f0f2f5;
+    background: #c8daeb;
     padding: 20px;
     text-align: center;
     padding: 0px;
 }
 
+.logo {
+  display: block;
+  max-width: 809px;   /* or whatever max you want */
+  width: 100%;        /* scale down responsively */
+  height: auto;       /* maintain aspect ratio */
+  margin: 0 auto 1em; /* optional: center and add spacing below */
+}
+
 h1 {
-    color: #333;
+    color: #FC7C00;
     margin: 0px auto;
 }
 

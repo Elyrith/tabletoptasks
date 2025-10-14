@@ -12,12 +12,9 @@
     {% for task in tasks %}
     <div class="card" onclick="toggleTask(this)">{{ task }}</div>
     {% endfor %}
-    <div class="button-container">
-        <button class="complete-btn" onclick="markComplete()">Mark Complete</button>
-        <!--button class="failed-btn" onclick="markFailed()">Mark Failed</button-->
-        <button class="reset-btn" onclick="resetCard()">Reset Card</button>
-    </div>
+
     <script>{{ js }}</script>
+
     <div class="footer_container">
         <div class="how_to_play">
             <h2>{{ how_to_play_header }}</h2>
@@ -28,6 +25,7 @@
             </ul>
         </div>
     </div>
+
     <div class="footer">
         <p>{{ footer }}Ryan Loudfoot</p>
         <p><a href="https://www.github.com/Elyrith" target="_blank">GitHub</a></p>
