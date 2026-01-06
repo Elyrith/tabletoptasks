@@ -10,9 +10,10 @@ tasks:
   - "Place in the top half of a game you play in. (Example: If there are 4 players in the game, end up in 1st or 2nd place.)"
   - "Play a game you've never played before."
   - "Roll the highest number on a single die as part of normal gameplay."
+  - "Roll the lowest number on a single die as part of normal gameplay."
   - "Play at least three unique games during the event."
   - "Play a game with someone you've never met before."
-  - "Play an entire game where you never miss when it's your turn."
+  - "Play an entire game where you never miss noticing when it's your turn."
 
 how_to_play_header: "How to Play"
 how_to_play:
