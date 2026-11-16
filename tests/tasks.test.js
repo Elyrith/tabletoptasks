@@ -85,7 +85,7 @@ test("newSeed makes short codes that differ", () => {
 });
 
 test("language file has what the page needs", () => {
-    for (const key of ["title", "header", "goal", "how_to_play_header", "invite", "share", "new_card", "link_copied", "footer"]) {
+    for (const key of ["title", "header", "goal", "how_to_play_header", "invite", "new_card", "footer"]) {
         assert.equal(typeof strings[key], "string", key);
         assert.notEqual(strings[key], "", key);
     }

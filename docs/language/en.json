@@ -17,11 +17,9 @@
   "how_to_play": [
     "Each player gets 5 random tasks. Be the first to complete all your tasks to win!",
     "Tap/click a card to mark it as completed or reset it.",
-    "Want to play the same card as a friend? Use \"Share this card\" to send them a link."
+    "Want to play the same card as a friend? Send them the link from the address bar."
   ],
   "invite": "Invite others to play:",
-  "share": "Share this card",
   "new_card": "New card",
-  "link_copied": "Link copied!",
   "footer": "Created by "
 }

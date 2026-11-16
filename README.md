@@ -8,7 +8,7 @@ It is a static website (plain HTML, CSS and JavaScript, no build step) served by
 
 ## Sharing a card
 
-The address always carries the card's seed, for example `?seed=k7p2xq`. The same seed always deals the same 5 tasks, so "Share this card" (or copying the address) gives a friend the same card. Opening the plain address, or "New card", deals a new one.
+The address always carries the card's seed, for example `?seed=k7p2xq`. The same seed always deals the same 5 tasks, so sending a friend the link from the address bar gives them the same card. Opening the plain address, or "New card", deals a new one.
 
 If the task list in `docs/language/en.json` changes, an old seed deals a different card than it used to.
 

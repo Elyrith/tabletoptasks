@@ -131,12 +131,11 @@ h2 {
     transition: transform 0.06s ease;
 }
 
-/* share / new card row */
+/* new card link */
 .actions {
     margin: 14px auto;
 }
 
-.actions button,
 .actions a {
     display: inline-block;
     padding: 8px 14px;
@@ -151,16 +150,8 @@ h2 {
     cursor: pointer;
 }
 
-.actions button:hover,
 .actions a:hover {
     background: #eef4ff;
-}
-
-#status {
-    display: block;
-    min-height: 1.4em;
-    margin-top: 6px;
-    font-size: 14px;
 }
 
 @media (max-width: 600px) {

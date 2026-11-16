@@ -86,27 +86,6 @@ function renderCards(container, tasks) {
     }
 }
 
-function showStatus(message) {
-    const status = document.getElementById("status");
-    status.textContent = message;
-    setTimeout(() => { status.textContent = ""; }, 2500);
-}
-
-async function shareCard(strings) {
-    const url = window.location.href;
-    try {
-        if (navigator.share) {
-            await navigator.share({ title: strings.title, url: url });
-        } else {
-            await navigator.clipboard.writeText(url);
-            showStatus(strings.link_copied);
-        }
-    } catch (err) {
-        // The person closed the share sheet, or the browser blocked the clipboard.
-        // Either way the link is in the address bar.
-    }
-}
-
 async function init() {
     const response = await fetch("language/en.json");
     const strings = await response.json();
@@ -153,11 +132,6 @@ async function init() {
             toggleCard(card);
         }
     });
-
-    const share = document.getElementById("share");
-    share.textContent = strings.share;
-    share.hidden = false;
-    share.addEventListener("click", () => shareCard(strings));
 }
 
 if (typeof document !== "undefined") {
