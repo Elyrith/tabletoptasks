@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tabletop Tasks - A Meta-Game for Game Night</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tasks.css">
+</head>
+<body>
+    <h1 id="header">Tabletop Tasks</h1>
+    <h2 class="goal" id="goal"></h2>
+
+    <noscript><p class="noscript">Tabletop Tasks needs JavaScript to deal your cards.</p></noscript>
+
+    <div id="cards"></div>
+
+    <div class="actions">
+        <a id="new-card" href="./"></a>
+    </div>
+
+    <div class="footer_container">
+        <div class="how_to_play">
+            <h2 id="how-to-play-header"></h2>
+            <ul id="how-to-play"></ul>
+        </div>
+        <div class="qrcode">
+            <div id="invite"></div>
+            <img src="images/qrcode-tabletop-tasks.png" alt="QR code linking to Tabletop Tasks">
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><span id="footer"></span>Ryan Loudfoot</p>
+        <p><a href="https://www.github.com/Elyrith" target="_blank" rel="noopener">GitHub</a></p>
+    </div>
+
+    <script src="tasks.js"></script>
+</body>
+</html>
