@@ -111,9 +111,7 @@ async function init() {
     const list = document.getElementById("how-to-play");
     for (const rule of strings.how_to_play) {
         const item = document.createElement("li");
-        const text = document.createElement("p");
-        text.textContent = rule;
-        item.append(text);
+        item.textContent = rule;
         list.append(item);
     }
 
