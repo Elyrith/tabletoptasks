@@ -2,7 +2,7 @@
 
 A meta-game for your game night.
 
-**Play it: <https://elyrith.github.io/tabletoptasks/>**
+**Play it: <https://tabletoptasks.com/>**
 
 That is GitHub's own address for the site. It redirects to the site's custom domain (currently tabletoptasks.com), so this link keeps working if the domain ever changes.
 
