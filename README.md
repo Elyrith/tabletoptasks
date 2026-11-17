@@ -2,6 +2,10 @@
 
 A meta-game for your game night.
 
+**Play it: <https://tabletoptasks.com/>**
+
+That is GitHub's own address for the site. It redirects to the site's custom domain (currently tabletoptasks.com), so this link keeps working if the domain ever changes.
+
 Each player gets 5 random tasks ("compliment someone's great move", "roll the lowest number on a die"...) and tries to be the first to finish them all.
 
 It is a static website (plain HTML, CSS and JavaScript, no build step) served by GitHub Pages from the `docs/` folder.
