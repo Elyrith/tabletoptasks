@@ -1,38 +1,163 @@
 body {
-    font-family: 'IBM Plex Serif', serif;
+    font-family: 'IBM Plex Serif', Georgia, serif;
+    /* Keeps the fallback font the same visual size as IBM Plex Serif while it loads. */
+    font-size-adjust: from-font;
+    line-height: 1.5;
     background: #c8daeb;
     text-align: center;
-    padding: 0px;
+    margin: 0;
 }
 
 h1 {
     color: #FC7C00;
-    margin: 0px auto;
+    margin: 0 auto;
+    text-wrap: balance;
 }
 
 h2 {
-    margin: 0px auto;
+    margin: 0 auto;
 }
 
 .goal {
-    font-size: 18px;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    font-weight: 700;
+    text-wrap: balance;
 }
 
 .noscript {
-    margin: 20px;
+    margin: 1.25rem;
+}
+
+/* task cards: a list of toggle buttons */
+.cards {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.cards li {
+    width: 95%;
+    max-width: 800px;
+    margin: 4px auto;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 3.25rem;
+    /* Room on both sides for the completed checkmark, so centred text never touches it. */
+    padding: 0.35rem 2.5rem;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    color: inherit;
+    font: inherit;
+    text-align: center;
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+    cursor: pointer;
+}
+
+.card:focus-visible {
+    outline: 3px solid #1b5fd1;
+    outline-offset: 2px;
+}
+
+/* completed state: colour plus a checkmark, so colour isn't the only signal */
+.card[aria-pressed="true"] {
+    background-color: #d4edda;
+    border-color: rgba(40,167,69,0.6);
+    box-shadow: 0 6px 14px rgba(40,167,69,0.06);
+}
+
+.card[aria-pressed="true"]::after {
+    content: "\2713";
+    position: absolute;
+    top: 0.5rem;
+    right: 0.625rem;
+    width: 1.625rem;
+    height: 1.625rem;
+    line-height: 1.625rem;
+    border-radius: 50%;
+    background: rgb(40,167,69);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+.card {
+    transition: box-shadow 0.12s ease, border-color 0.12s ease, background-color 0.12s ease;
+}
+
+/* Only movement is switched off for people who ask for less motion. */
+@media (prefers-reduced-motion: no-preference) {
+    .card {
+        transition-property: transform, box-shadow, border-color, background-color;
+    }
+
+    .card:active {
+        transform: scale(0.995);
+        transition-duration: 0.06s;
+    }
+}
+
+/* Forced colors removes shadows and replaces colours: keep the completed state visible. */
+@media (forced-colors: active) {
+    .card[aria-pressed="true"] {
+        border-color: Highlight;
+    }
+
+    .card[aria-pressed="true"]::after {
+        background: Highlight;
+        color: HighlightText;
+    }
+}
+
+/* new card link */
+.actions {
+    margin: 0.875rem auto;
+}
+
+.actions a {
+    display: inline-block;
+    padding: 0.5rem 0.875rem;
+    margin: 0 5px;
+    border: 2px solid #2864d2;
+    border-radius: 6px;
+    background: white;
+    color: #2864d2;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.actions a:hover {
+    background: #eef4ff;
+}
+
+.actions a:focus-visible {
+    outline: 3px solid #1b5fd1;
+    outline-offset: 2px;
 }
 
 /* bottom sections: rules, then the QR code, then a credit line */
 .how_to_play,
 .qrcode {
     max-width: 600px;
-    margin: 28px auto 0;
-    padding: 0 20px;
+    margin: 1.75rem auto 0;
+    padding: 0 1.25rem;
 }
 
 .how_to_play h2,
 .qrcode h2 {
-    margin: 0 0 10px;
+    margin: 0 0 0.625rem;
     font-size: 1rem;
     font-weight: 600;
     color: #3b4f63;
@@ -40,14 +165,16 @@ h2 {
 
 .how_to_play ul {
     margin: 0;
-    padding-left: 20px;
+    padding-left: 1.25rem;
     text-align: left;
-    font-size: 16px;
-    line-height: 1.4;
+}
+
+.how_to_play li {
+    text-wrap: pretty;
 }
 
 .how_to_play li + li {
-    margin-top: 6px;
+    margin-top: 0.375rem;
 }
 
 /* A white tile with room around the code, so it scans on any background. */
@@ -66,8 +193,8 @@ h2 {
 }
 
 .footer {
-    margin: 28px auto 24px;
-    padding: 0 20px;
+    margin: 1.75rem auto 1.5rem;
+    padding: 0 1.25rem;
     font-size: 0.85rem;
     color: #3b4f63;
 }
@@ -80,97 +207,13 @@ h2 {
     color: inherit;
 }
 
-/* card base */
-.card {
-    background: white;
-    border-radius: 12px;
-    margin: 4px auto;
-    width: 95%;
-    max-width: 800px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.12s ease, box-shadow 0.12s ease, border-color 0.12s ease;
-
-    min-height: 52px;       /* keeps uniform height */
-    overflow-wrap: break-word;
-    display: flex;
-    align-items: center;
-    border: 2px solid transparent; /* baseline border for smooth transition */
-    position: relative;
-}
-
-.card p {
-    /* Room on both sides for the completed checkmark, so centred text never touches it. */
-    padding: 0px 40px;
-    margin: 5px auto;
-    text-align: center;
-}
-
-.card:focus-visible {
-    outline: 3px solid rgb(62, 130, 246);
-    outline-offset: 2px;
-}
-
-/* completed state: colour plus a checkmark, so colour isn't the only signal */
-.card.completed {
-    background-color: #d4edda;
-    border-color: rgba(40,167,69,0.6);
-    box-shadow: 0 6px 14px rgba(40,167,69,0.06);
-}
-
-.card.completed::after {
-    content: "\2713";
-    position: absolute;
-    top: 8px;
-    right: 10px;
-    background: rgb(40,167,69);
-    color: #fff;
-    width: 26px;
-    height: 26px;
-    line-height: 26px;
-    text-align: center;
-    border-radius: 50%;
-    font-weight: 700;
-    font-size: 14px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.12);
-}
-
-/* touch feedback */
-.card:active {
-    transform: scale(0.995);
-    transition: transform 0.06s ease;
-}
-
-/* new card link */
-.actions {
-    margin: 14px auto;
-}
-
-.actions a {
-    display: inline-block;
-    padding: 8px 14px;
-    margin: 0 5px;
-    border: 2px solid rgb(62, 130, 246);
-    border-radius: 6px;
-    background: white;
-    color: rgb(40, 100, 210);
-    font: inherit;
-    font-size: 16px;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.actions a:hover {
-    background: #eef4ff;
-}
-
-@media (max-width: 600px) {
+/* em, not px, so the breakpoint follows the user's text size */
+@media (max-width: 37.5em) {
     .card {
-        font-size: 18px;
+        font-size: 1.125rem;
     }
 
     .goal {
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 }

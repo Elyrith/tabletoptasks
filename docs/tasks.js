@@ -67,22 +67,23 @@ function pickTasks(allTasks, count, rng) {
 // --- Page ------------------------------------------------------------------
 
 function toggleCard(card) {
-    const done = card.classList.toggle("completed");
-    card.setAttribute("aria-pressed", String(done));
+    const done = card.getAttribute("aria-pressed") === "true";
+    card.setAttribute("aria-pressed", String(!done));
 }
 
+// Each task is a native <button> in a list item, so it gets keyboard
+// support (Enter and Space) and its role and focus behaviour for free.
 function renderCards(container, tasks) {
     container.replaceChildren();
     for (const task of tasks) {
-        const card = document.createElement("div");
+        const item = document.createElement("li");
+        const card = document.createElement("button");
+        card.type = "button";
         card.className = "card";
-        card.setAttribute("role", "button");
         card.setAttribute("aria-pressed", "false");
-        card.tabIndex = 0;
-        const text = document.createElement("p");
-        text.textContent = task;
-        card.append(text);
-        container.append(card);
+        card.textContent = task;
+        item.append(card);
+        container.append(item);
     }
 }
 
@@ -120,13 +121,6 @@ async function init() {
     cards.addEventListener("click", (event) => {
         const card = event.target.closest(".card");
         if (card) {
-            toggleCard(card);
-        }
-    });
-    cards.addEventListener("keydown", (event) => {
-        const card = event.target.closest(".card");
-        if (card && (event.key === "Enter" || event.key === " ")) {
-            event.preventDefault();
             toggleCard(card);
         }
     });
