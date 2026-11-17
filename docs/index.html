@@ -6,9 +6,12 @@
     <title>Tabletop Tasks - A Meta-Game for Game Night</title>
     <!-- Opt in to the operating system's text size setting (ignored where unsupported). -->
     <meta name="text-scale" content="scale">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Both themes are supported; declared early so the first paint isn't a white flash. -->
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#c8daeb" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#14202d" media="(prefers-color-scheme: dark)">
+    <link rel="preload" href="fonts/ibm-plex-serif-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/ibm-plex-serif-latin-700.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="tasks.css">
 </head>
 <body>
