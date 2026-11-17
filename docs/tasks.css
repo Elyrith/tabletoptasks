@@ -1,15 +1,75 @@
+/* IBM Plex Serif (SIL Open Font License, see fonts/OFL.txt), served from this site.
+   Only the Latin subset is shipped; other characters fall back to Georgia/serif. */
+@font-face {
+    font-family: 'IBM Plex Serif';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('fonts/ibm-plex-serif-latin-400.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: 'IBM Plex Serif';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('fonts/ibm-plex-serif-latin-700.woff2') format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+    --bg: #c8daeb;
+    --ink: #000000;
+    --muted: #3b4f63;
+    --brand: #FC7C00;
+    --card: #ffffff;
+    --card-edge: #587490;
+    --done: #d4edda;
+    --done-edge: #2e7d46;
+    --check: #28a745;
+    --check-ink: #ffffff;
+    --link: #2864d2;
+    --link-bg: #ffffff;
+    --link-hover: #eef4ff;
+    --focus: #1b5fd1;
+    --shadow: rgba(0, 0, 0, 0.1);
+    /* On the root so the viewport, scrollbars and controls follow the scheme too. */
+    color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg: #14202d;
+        --ink: #e8eef5;
+        --muted: #aebfce;
+        --card: #1f2f40;
+        --card-edge: #6a8399;
+        --done: #1d3b2b;
+        --done-edge: #3aa77a;
+        --check: #3aa77a;
+        --check-ink: #0d1f17;
+        --link: #8db4ff;
+        --link-bg: #1f2f40;
+        --link-hover: #2a3d52;
+        --focus: #7aa7ff;
+        --shadow: rgba(0, 0, 0, 0.4);
+    }
+}
+
 body {
     font-family: 'IBM Plex Serif', Georgia, serif;
     /* Keeps the fallback font the same visual size as IBM Plex Serif while it loads. */
     font-size-adjust: from-font;
     line-height: 1.5;
-    background: #c8daeb;
+    background: var(--bg);
+    color: var(--ink);
     text-align: center;
     margin: 0;
 }
 
 h1 {
-    color: #FC7C00;
+    color: var(--brand);
     margin: 0 auto;
     text-wrap: balance;
 }
@@ -51,10 +111,10 @@ h2 {
     min-height: 3.25rem;
     /* Room on both sides for the completed checkmark, so centred text never touches it. */
     padding: 0.35rem 2.5rem;
-    border: 2px solid transparent;
+    border: 2px solid var(--card-edge);
     border-radius: 12px;
-    background: white;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background: var(--card);
+    box-shadow: 0 4px 8px var(--shadow);
     color: inherit;
     font: inherit;
     text-align: center;
@@ -64,15 +124,14 @@ h2 {
 }
 
 .card:focus-visible {
-    outline: 3px solid #1b5fd1;
+    outline: 3px solid var(--focus);
     outline-offset: 2px;
 }
 
 /* completed state: colour plus a checkmark, so colour isn't the only signal */
 .card[aria-pressed="true"] {
-    background-color: #d4edda;
-    border-color: rgba(40,167,69,0.6);
-    box-shadow: 0 6px 14px rgba(40,167,69,0.06);
+    background-color: var(--done);
+    border-color: var(--done-edge);
 }
 
 .card[aria-pressed="true"]::after {
@@ -84,8 +143,8 @@ h2 {
     height: 1.625rem;
     line-height: 1.625rem;
     border-radius: 50%;
-    background: rgb(40,167,69);
-    color: #fff;
+    background: var(--check);
+    color: var(--check-ink);
     font-size: 0.875rem;
     font-weight: 700;
     text-align: center;
@@ -129,21 +188,21 @@ h2 {
     display: inline-block;
     padding: 0.5rem 0.875rem;
     margin: 0 5px;
-    border: 2px solid #2864d2;
+    border: 2px solid var(--link);
     border-radius: 6px;
-    background: white;
-    color: #2864d2;
+    background: var(--link-bg);
+    color: var(--link);
     font: inherit;
     text-decoration: none;
     cursor: pointer;
 }
 
 .actions a:hover {
-    background: #eef4ff;
+    background: var(--link-hover);
 }
 
 .actions a:focus-visible {
-    outline: 3px solid #1b5fd1;
+    outline: 3px solid var(--focus);
     outline-offset: 2px;
 }
 
@@ -160,7 +219,7 @@ h2 {
     margin: 0 0 0.625rem;
     font-size: 1rem;
     font-weight: 600;
-    color: #3b4f63;
+    color: var(--muted);
 }
 
 .how_to_play ul {
@@ -196,7 +255,7 @@ h2 {
     margin: 1.75rem auto 1.5rem;
     padding: 0 1.25rem;
     font-size: 0.85rem;
-    color: #3b4f63;
+    color: var(--muted);
 }
 
 .footer p {

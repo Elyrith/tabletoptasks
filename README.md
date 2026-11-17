@@ -12,6 +12,10 @@ The address always carries the card's seed, for example `?seed=k7p2xq`. The same
 
 If the task list in `docs/language/en.json` changes, an old seed deals a different card than it used to.
 
+## Look and feel
+
+The page follows the device's light or dark setting (colours are tokens at the top of `docs/tasks.css`; the title orange is the brand colour in both). The font, IBM Plex Serif, is served from `docs/fonts/` (Latin subset, SIL Open Font License, see `docs/fonts/OFL.txt`), so the page makes no third-party requests.
+
 ## Adding or changing tasks
 
 Edit `docs/language/en.json`. The page text lives there too. Tasks are plain text.
